@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvc.Data;
 using System.Configuration;
+using SalesWebMvc.Models;
+using SalesWebMvc.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,9 +15,11 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 builder.Services.AddControllersWithViews();
 
 var connectionStringMysql = builder.Configuration.GetConnectionString("SalesWebMvcContext");
-builder.Services.AddDbContext<SalesWebMvcContext>(options => options.UseMySql(connectionStringMysql, ServerVersion.Parse("8.0.25-mysql")));
+builder.Services.AddDbContext<SalesWebMvcContext>(options => options.UseMySql(connectionStringMysql, ServerVersion.Parse("8.0.35-mysql")));
 
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
+
 
 var app = builder.Build();
 

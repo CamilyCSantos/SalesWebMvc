@@ -1,15 +1,18 @@
 ﻿@model IEnumerable<SalesWebMvc.Models.Seller>
 
 @{
-    ViewData["Sellers"] = "Index";
+    ViewData["Title"] = "Sellers";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-<table class="table table-striped table-hover">
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
 
+<table class="table table-striped table-hover">
     <thead>
-        <tr class="sucess">
+        <tr class="success">
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
